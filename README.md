@@ -19,6 +19,11 @@ These applications have been tested on:
 
 ## Building
 
+First, run the below command.
+```bash
+autoreconf -vif
+```
+
 Configure the distribution by running the `configure` script. You'll need to specify the location of the standard and Intel SGX builds of GMP:
 
 ```
