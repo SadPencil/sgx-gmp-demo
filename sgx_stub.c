@@ -324,18 +324,6 @@ int sgx_thread_set_untrusted_event_ocall(const void *waiter)
 	return (int) p_sgx_thread_set_untrusted_event_ocall(waiter);
 }
 
-sgx_status_t sgx_get_ps_cap(sgx_ps_cap_t *p_sgx_ps_cap)
-{
-	if ( l_sgx_get_ps_cap == 0 ) {
-		if ( h_libsgx_uae_service == 0 ) _load_libsgx_uae_service();
-		*(void **)(&p_sgx_get_ps_cap)= _load_symbol(h_libsgx_uae_service, "sgx_get_ps_cap", &l_sgx_get_ps_cap);
-	}
-
-	if ( l_sgx_get_ps_cap == -1 ) _undefined_symbol("sgx_get_ps_cap");
-
-	return (sgx_status_t) p_sgx_get_ps_cap(p_sgx_ps_cap);
-}
-
 sgx_status_t sgx_get_whitelist(uint8_t *p_whitelist, uint32_t whitelist_size)
 {
 	if ( l_sgx_get_whitelist == 0 ) {
